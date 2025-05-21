@@ -46,20 +46,39 @@ body {
 .login-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically */
   height: 100vh;
+  width: 100vw;             /* full viewport width */
+  padding: 1rem;
+  background-color: #f4f7fa;
+  box-sizing: border-box;
+  text-align: center;       /* center text inside */
 }
 
 .login-container h2 {
-  font-size: 2rem;
+  width: 100%;
   margin-bottom: 1rem;
 }
+
+.login-container form {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  margin: 0 auto;           /* center form horizontally */
+  text-align: left;         /* inputs left-aligned */
+}
+
 
 .login-container button {
   padding: 0.8rem 1.5rem;
   background-color: #2563eb; /* Blue-600 */
   color: white;
+  align-items: center;   
   border: none;
   border-radius: 8px;
   font-size: 1rem;

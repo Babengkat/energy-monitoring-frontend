@@ -4,9 +4,13 @@ import './App.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import EnergyReadings from './components/EnergyReadings';
 
-<Route path="/energy-readings" element={<EnergyReadings />} />
+// Remove any token auth related code, just keep login/logout with fixed creds
 
 function App() {
+  // Hardcoded credentials
+  const validUsername = 'admin';
+  const validPassword = 'password123';
+
   // User auth states
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
@@ -20,19 +24,9 @@ function App() {
   const [dateFilter, setDateFilter] = useState('');
   const [showTable, setShowTable] = useState(true);
 
-  // Fetch data function for dashboard with token auth
+  // Fetch data function (keep as is, or update if you want to remove auth headers)
   const fetchData = () => {
-    const token = localStorage.getItem('accessToken');
-    if (!token) {
-      setLoggedIn(false);
-      return;
-    }
-
-    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/energy-readings/`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/energy-readings/`)
       .then(response => {
         const data = response.data;
 
@@ -45,7 +39,6 @@ function App() {
         const total = filteredData.reduce((sum, reading) => sum + reading.energy, 0);
         setTotalEnergy(total);
 
-        // Group energy by building and appliance
         const groupedBuildings = {};
         const groupedAppliances = {};
 
@@ -65,48 +58,36 @@ function App() {
       })
       .catch(error => {
         console.error('Error fetching data:', error);
-        if (error.response && error.response.status === 401) {
-          alert('Session expired or unauthorized. Please login again.');
-          handleLogout();
-        }
       });
   };
 
   useEffect(() => {
     if (loggedIn) {
       fetchData();
-      const interval = setInterval(fetchData, 10000); // Auto-refresh every 10 seconds
+      const interval = setInterval(fetchData, 10000);
       return () => clearInterval(interval);
     }
   }, [dateFilter, loggedIn]);
 
-  // Login handler
+  // Login handler with hardcoded creds
   const handleLogin = (e) => {
     e.preventDefault();
-
-    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/token/`, {
-      username: username,
-      password: password
-    })
-      .then(response => {
-        localStorage.setItem('accessToken', response.data.access);
-        setLoggedIn(true);
-        setUsername('');
-        setPassword('');
-        fetchData();
-      })
-      .catch(error => {
-        alert('Invalid username or password');
-      });
+    if (username === validUsername && password === validPassword) {
+      setLoggedIn(true);
+      setUsername('');
+      setPassword('');
+      fetchData();
+    } else {
+      alert('Invalid username or password');
+    }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('accessToken');
     setLoggedIn(false);
   };
 
   if (!loggedIn) {
-    // Login form
+    // Your exact same login UI here — untouched
     return (
       <div className="login-container">
         <h2>Login</h2>
@@ -138,7 +119,7 @@ function App() {
     );
   }
 
-  // Dashboard UI
+  // Your dashboard UI below remains exactly as you wrote it (no changes)
   return (
     <div className="container">
       <div className="header">
