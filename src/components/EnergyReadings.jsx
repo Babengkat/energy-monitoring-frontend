@@ -1,28 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import axiosInstance from '../api/axios';
-import EnergyReadings from './components/EnergyReadings';
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const EnergyReadings = () => {
   const [readings, setReadings] = useState([]);
 
   useEffect(() => {
-    axiosInstance.get('energy-readings/')
-      .then(response => {
-        setReadings(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching energy readings:', error);
-      });
+    axios.get("https://energy-monitoring-backend.onrender.com/api/energy-readings/")
+      .then((response) => setReadings(response.data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
     <div>
-      <h2>Energy Readings</h2>
+      <h1>Energy Readings</h1>
       <ul>
-        {readings.map(reading => (
+        {readings.map((reading) => (
           <li key={reading.id}>
-            {reading.device_name} - {reading.energy_consumed} kWh at {reading.timestamp}
+            {reading.timestamp} - {reading.energy_consumed} kWh
           </li>
         ))}
       </ul>
