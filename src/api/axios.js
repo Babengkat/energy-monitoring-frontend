@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  // headers, interceptors, etc...
+const axiosInstance = axios.create({
+  baseURL: 'https://energy-monitoring-backend.onrender.com/api/',
+  timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  },
 });
 
-export default instance;
+export default axiosInstance;

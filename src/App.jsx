@@ -23,6 +23,8 @@ function App() {
   const [applianceData, setApplianceData] = useState({});
   const [dateFilter, setDateFilter] = useState('');
   const [showTable, setShowTable] = useState(true);
+  
+  <EnergyReadings />
 
   // Fetch data function (keep as is, or update if you want to remove auth headers)
   const fetchData = () => {
