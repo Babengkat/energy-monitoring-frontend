@@ -1,0 +1,152 @@
+/* Reset and base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #1e3a8a; /* Indigo-900 */
+}
+
+.logout-button {
+  background-color: #ef4444; /* Red-500 */
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: #dc2626; /* Red-600 */
+}
+
+/* Login */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.login-container button {
+  padding: 0.8rem 1.5rem;
+  background-color: #2563eb; /* Blue-600 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #1d4ed8; /* Blue-700 */
+}
+
+/* Filters and Summary */
+.summary {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  background-color: #e0f2fe; /* Blue-100 */
+  padding: 1rem;
+  border-radius: 8px;
+  color: #0c4a6e; /* Blue-900 */
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.filters input[type="date"] {
+  padding: 0.4rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.toggle-button {
+  background-color: #10b981; /* Emerald-500 */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #059669; /* Emerald-600 */
+}
+
+/* Section Headings */
+.section {
+  margin-top: 2rem;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  color: #0f172a; /* Slate-900 */
+  margin-bottom: 0.5rem;
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th, .data-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.data-table th {
+  background-color: #f3f4f6;
+  font-weight: bold;
+  color: #374151;
+}
+
+.data-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Charts Responsive Container */
+.recharts-responsive-container {
+  margin-top: 1rem;
+}
