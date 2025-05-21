@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../api/axios';
+import EnergyReadings from './components/EnergyReadings';
+
 
 const EnergyReadings = () => {
   const [readings, setReadings] = useState([]);
